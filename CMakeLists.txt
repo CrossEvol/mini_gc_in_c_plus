@@ -4,7 +4,7 @@ set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
 set(CMAKE_GENERATOR "MinGW Makefiles")
 
-project(start_up)
+project(mini_gc)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -32,28 +32,29 @@ FetchContent_MakeAvailable(fmt Catch2)
 # Create a library
 ############################################################
 
-add_library(hello_library STATIC
-        "src/hello.cpp"
+add_library(gc_lib STATIC
+        src/object.cpp
+        src/vm.cpp
 )
-add_library(hello::library ALIAS hello_library)
+add_library(gc::library ALIAS gc_lib)
 
-target_include_directories(hello_library
+target_include_directories(gc_lib
         PUBLIC
         ${PROJECT_SOURCE_DIR}/include
 )
 
-target_link_libraries(hello_library PRIVATE fmt::fmt)
+target_link_libraries(gc_lib PRIVATE fmt::fmt)
 
 ############################################################
 # Create Main executable
 ############################################################
 
-add_executable(start_up 
+add_executable(${PROJECT_NAME}
     src/main.cpp
 )
 
 # Link libraries to main executable
-target_link_libraries(start_up PRIVATE hello::library)
+target_link_libraries(${PROJECT_NAME} PRIVATE gc::library)
 
 ############################################################
 # Create Test executable
@@ -65,6 +66,6 @@ add_executable(unit_tests
 
 # Link libraries to test executable
 target_link_libraries(unit_tests PRIVATE 
-    hello::library
+    gc::library
     Catch2::Catch2WithMain
 )

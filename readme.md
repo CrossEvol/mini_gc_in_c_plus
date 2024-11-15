@@ -1,4 +1,6 @@
-- [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html) 
+- [babys-first-garbage-collector **BLOG**](https://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/)
+- [babys-first-garbage-collector **REPO**](https://github.com/munificent/mark-sweep)
+- [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html)
 - [cmake-examples](https://github.com/ttroy50/cmake-examples)
 - [Catch2](https://github.com/catchorg/Catch2) 
 - [fmt](https://github.com/fmtlib/fmt)
